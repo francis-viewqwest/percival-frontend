@@ -1,15 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar: React.FC = () => {
+  const location = useLocation();
+
   const navLink = [
     {
       title: "Home",
       path: "/",
     },
     {
-      title: "Work",
-      path: "/work",
+      title: "Experience",
+      path: "/experience",
     },
     {
       title: "Services",
@@ -19,60 +21,59 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <div className="navbar text-[#FFFFFF]">
-        <div className="navbar-start text-[#FFFFFF]">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+      <div className="w-full h-full p-4 text-white bg-bg lg:pb-0">
+        <div className=" max-w-[1200px] m-auto">
+          <div className="flex justify-between items-center">
+            <div>
+              <Link
+                to="/"
+                className="text-lg font-black flex flex-col text-white leading-5"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+                spectacon
+                <p className="font-normal">
+                  percival
+                  <span className="font-black text-orange">estimate</span>
+                </p>
+              </Link>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-black rounded-box w-52"
-            >
+            <div>
+              <ul className="hidden lg:flex gap-6">
+                {navLink.map((item, index) => (
+                  <li key={index}>
+                    <Link
+                      className={`font-heavy uppercase transition-all ease-out ${
+                        location.pathname === item.path && "text-orange"
+                      }`}
+                      to={item.path}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h1 className="font-heavy uppercase right-0 text-sm text-right leading-5 flex flex-col">
+                Project Manager <span>Quantity Surveyor</span>
+              </h1>
+            </div>
+          </div>
+          <div className="py-6 lg:hidden">
+            <ul className="flex gap-6">
               {navLink.map((item, index) => (
                 <li key={index}>
-                  <Link className="font-black uppercase" to={item.path}>
+                  <Link
+                    className={`font-heavy uppercase ${
+                      location.pathname === item.path && "text-orange"
+                    }`}
+                    to={item.path}
+                  >
                     {item.title}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <Link to="/" className="text-xl font-black flex flex-col text-white">
-            spectacon
-            <p className="font-normal">
-              percival<span className="font-black text-orange">estimate</span>
-            </p>
-          </Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {navLink.map((item, index) => (
-              <li key={index}>
-                <Link className="font-black uppercase" to={item.path}>
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="navbar-end">
-          <a className="font-black w-64 text-xl hidden lg:block">
-            Project Manager Quantity Surveyor
-          </a>
         </div>
       </div>
     </>

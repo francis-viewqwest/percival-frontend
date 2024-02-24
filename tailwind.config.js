@@ -3,8 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: ["Gilroy-Light", "sans-serif"],
-      black: ["Gilroy-ExtraBold", "sans-serif"],
+      sans: ["Gilroy-Medium", "sans-serif"],
+      bold: ["Gilroy-Bold", "sans-serif"],
+      extrabold: ["Gilroy-ExtraBold", "sans-serif"],
+      heavy: ["Gilroy-Heavy", "sans-serif"],
     },
     extend: {
       colors: {

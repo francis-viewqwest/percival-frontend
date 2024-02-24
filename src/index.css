@@ -2,16 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
-  font-family: "Gilroy-Light";
-  src: url("../src/assets/fonts/Gilroy-Light.otf") format("opentype");
+  font-family: "Gilroy-Medium";
+  src: url("../src/assets/font/Gilroy-Medium.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Gilroy-ExtraBold";
-  src: url("../src/assets/Gilroy-ExtraBold.otf") format("opentype");
+  font-family: "Gilroy-Bold";
+  src: url("../src/assets/font/Gilroy-Bold.ttf") format("truetype");
   font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy-ExtraBold";
+  src: url("../src/assets/font/Gilroy-ExtraBold.ttf") format("truetype");
+  font-weight: extrabold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy-Heavy";
+  src: url("../src/assets/font/Gilroy-Heavy.ttf") format("truetype");
+  font-weight: heavy;
   font-style: normal;
 }
