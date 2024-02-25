@@ -21,9 +21,9 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <div className="w-full h-full p-4 text-white bg-bg lg:pb-0">
+      <div className="w-full h-full px-4 py-12 text-white bg-bg lg:pb-0">
         <div className=" max-w-[1200px] m-auto">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center relative">
             <div>
               <Link
                 to="/"
@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
               </Link>
             </div>
             <div>
-              <ul className="hidden lg:flex gap-6">
+              <ul className="hidden lg:flex lg:gap-6">
                 {navLink.map((item, index) => (
                   <li key={index}>
                     <Link

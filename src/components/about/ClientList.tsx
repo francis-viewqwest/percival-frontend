@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import acciona from "../../assets/images/client-logo/1.png";
 import kyriarch from "../../assets/images/client-logo/2.jpg";
 import bcArch from "../../assets/images/client-logo/3.jpg";
@@ -48,18 +49,37 @@ const ClientList: React.FC = () => {
     },
   ];
 
-  const displayClients = client.slice(0, 3);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 3) % client.length);
+    }, 3000); // Change the interval duration as needed
+
+    return () => clearInterval(interval);
+  }, [client.length]);
+
+  const visibleImages = client.slice(currentIndex, currentIndex + 3);
   return (
     <>
-      {displayClients.map((item, index) => (
-        <img
-          className="w-full h-full"
-          key={index}
-          src={item.logo}
-          alt="Client Logo"
-        />
-      ))}
+      <AnimatePresence initial={false}>
+        {visibleImages.map((image, index) => (
+          <motion.div
+            key={index}
+            className=" w-full h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
+            <img
+              src={image.logo}
+              alt={`Client Logo ${index}`}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </>
   );
 };

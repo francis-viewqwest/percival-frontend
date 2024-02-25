@@ -31,7 +31,7 @@ const OurExperience: React.FC = () => {
                     Our People have experience in the following projects
                   </p>
                   <div className="my-3">
-                    <div className="p-[1px] bg-white w-32 lg:w-96"></div>
+                    <div className="p-[0.1px] bg-white w-32 lg:w-96"></div>
                   </div>
                   <div className="lg:hidden">
                     <ExperienceList />

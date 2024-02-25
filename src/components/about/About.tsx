@@ -1,5 +1,10 @@
 import ClientList from "./ClientList";
 import Projects from "./Projects";
+import project1 from "../../assets/images/projects/land development.png";
+import project2 from "../../assets/images/reprojects/BCC C.jpg";
+import project3 from "../../assets/images/reprojects/waterpark.png";
+import project4 from "../../assets/images/reprojects/ARENA VIEW 4.jpg";
+import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
   return (
@@ -7,9 +12,9 @@ const Hero: React.FC = () => {
       <div className="w-full h-full bg-bg lg:h-screen">
         <div className="max-w-[1200px] m-auto">
           <div className="lg:flex lg:h-screen lg:items-center">
-            <div className="w-full px-4 lg:grid lg:grid-cols-2">
+            <div className="w-full px-4 lg:grid lg:grid-cols-2 lg:p-0">
               <div className="text-white">
-                <h1 className="text-5xl font-heavy uppercase flex items-center gap-3 lg:text-6xl">
+                <div className="text-5xl font-heavy uppercase flex items-center gap-3 lg:text-6xl">
                   <svg
                     className="text-xl text-orange"
                     xmlns="http://www.w3.org/2000/svg"
@@ -20,9 +25,9 @@ const Hero: React.FC = () => {
                     <path fill="currentColor" d="M3 21V3h18v18z" />
                   </svg>
                   About us
-                </h1>
+                </div>
 
-                <div className="mt-7 flex flex-col gap-2 pl-7 text-xs sm:w-[460px] lg:mt-1">
+                <div className="mt-7 flex flex-col gap-2 pl-7 text-xs sm:w-[460px] lg:mt-6">
                   <p>
                     <span className="font-black">Project Manager</span> and{" "}
                     <span className="font-black">Quantity Surveyor</span> with
@@ -55,9 +60,12 @@ const Hero: React.FC = () => {
                   </p>
                 </div>
                 <div className="hidden lg:block lg:py-3 lg:pl-7">
-                  <h1 className="hidden lg:flex lg:font-bold lg:uppercase lg:text-xl lg:tracking-tighter">
+                  <Link
+                    to="/experience"
+                    className="hidden lg:flex lg:font-bold lg:uppercase lg:text-xl lg:tracking-tighter lg:py-1"
+                  >
                     Contact Us
-                  </h1>
+                  </Link>
                   <div>
                     <div className="max-w-20 flex gap-1 lg:w-20">
                       <ClientList />
@@ -65,20 +73,34 @@ const Hero: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="py-5 lg:p-0">
+              <div className="py-5 lg:p-0 lg:relative">
                 <div className="flex justify-end lg:justify-start">
-                  <h1 className="text-white font-heavy uppercase text-2xl text-right leading-6 flex flex-col lg:text-5xl lg:text-left">
-                    COLLABORATION{" "}
+                  <h1 className="text-white font-heavy uppercase text-2xl text-right leading-6 flex flex-col lg:text-5xl lg:right-0 lg:text-left">
+                    COLLABORATION
                     <span className="text-orange">WITH OVERSIGHT</span>{" "}
                     MANAGEMENT
                   </h1>
                 </div>
-                <div className="grid grid-cols-4 gap-1 w-full relative py-7 lg:grid-cols-1 lg:py-2">
+                <div className="grid grid-cols-4 gap-1 w-full relative py-7 lg:grid-cols-1 lg:py-2 lg:absolute lg:top-[120px]">
                   <div className="lg:hidden">
                     <ClientList />
                   </div>
-                  <div className="grid grid-cols-2 gap-1 w-full">
-                    <Projects />
+
+                  <div className="grid grid-cols-5 grid-rows-5 gap-4">
+                    <div className="col-span-2 col-start-2">
+                      <img className="w-full h-full" src={project1} alt="" />
+                    </div>
+                    <div className="col-span-2 col-start-4">
+                      {" "}
+                      <img className="w-full h-full" src={project2} alt="" />
+                    </div>
+                    <div className="col-span-3 row-start-2">
+                      <img className="w-full h-full " src={project3} alt="" />
+                    </div>
+                    <div className="col-span-2 col-start-4 row-start-2">
+                      {" "}
+                      <img className="w-full h-full" src={project4} alt="" />
+                    </div>
                   </div>
                 </div>
               </div>
