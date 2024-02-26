@@ -80,12 +80,12 @@ const Hero: React.FC = () => {
                     MANAGEMENT
                   </h1>
                 </div>
-                <div className="grid grid-cols-4 gap-1 w-full relative py-7 lg:grid-cols-1 lg:py-2 lg:absolute lg:top-[120px]">
-                  <div className="lg:hidden">
+                <div className="grid grid-cols-2 gap-1 w-full relative py-7 lg:grid-cols-1 lg:py-2 lg:absolute lg:top-[120px]">
+                  <div className="flex flex-col max-w-20 lg:hidden">
                     <ClientList />
                   </div>
 
-                  <div className="grid grid-cols-5 grid-rows-5 gap-4">
+                  <div className="lg:grid lg:grid-cols-5 lg:grid-rows-5 gap-4">
                     <div className="col-span-2 col-start-2">
                       <img className="w-full h-full" src={project1} alt="" />
                     </div>

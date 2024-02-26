@@ -14,39 +14,17 @@ import DCM from "../../assets/images/client-logo/11.jpg";
 
 const ClientList: React.FC = () => {
   const client = [
-    {
-      logo: acciona,
-    },
-    {
-      logo: kyriarch,
-    },
-    {
-      logo: bcArch,
-    },
-    {
-      logo: olos,
-    },
-    {
-      logo: usn,
-    },
-    {
-      logo: oneArellano,
-    },
-    {
-      logo: rsBuilders,
-    },
-    {
-      logo: amberBuilders,
-    },
-    {
-      logo: letterR,
-    },
-    {
-      logo: robArch,
-    },
-    {
-      logo: DCM,
-    },
+    { logo: acciona },
+    { logo: kyriarch },
+    { logo: bcArch },
+    { logo: olos },
+    { logo: usn },
+    { logo: oneArellano },
+    { logo: rsBuilders },
+    { logo: amberBuilders },
+    { logo: letterR },
+    { logo: robArch },
+    { logo: DCM },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -59,7 +37,12 @@ const ClientList: React.FC = () => {
     return () => clearInterval(interval);
   }, [client.length]);
 
-  const displayClients = client.slice(currentIndex, currentIndex + 3);
+  const displayClients = [
+    client[(currentIndex - 1 + client.length) % client.length],
+    client[currentIndex],
+    client[(currentIndex + 1) % client.length],
+  ];
+
   return (
     <>
       <AnimatePresence>
@@ -68,7 +51,7 @@ const ClientList: React.FC = () => {
             key={index}
             src={item.logo}
             alt="Client Logo"
-            className="w-full h-full"
+            className="lg:w-full lg:h-full"
             initial={{ x: "100%", opacity: 0 }}
             animate={{ x: "0%", opacity: 1 }}
             exit={{ x: "-100%", opacity: 0 }}

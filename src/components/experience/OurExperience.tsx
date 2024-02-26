@@ -16,8 +16,6 @@ const OurExperience: React.FC = () => {
     index: number;
   } | null>(null);
 
-  const [isModalOpen, setIsModalOpen] = useState(true);
-
   const handleClick = (desc: string, category: string, index: number) => {
     setSelectedItem({ desc, category, index });
   };
@@ -27,15 +25,15 @@ const OurExperience: React.FC = () => {
   };
 
   const handleClickClose = () => {
-    setIsModalOpen(false)
-  }
+    setSelectedImg(null);
+  };
 
   return (
     <>
       {selectedImg && selectedImg.index === 0 ? (
-        <YearEndModal handleClickClose={handleClickClose} />
+        <YearEndModal handleClickClose={() => handleClickClose()} />
       ) : selectedImg && selectedImg.index === 1 ? (
-        <LaborModal />
+        <LaborModal handleClickClose={() => handleClickClose()} />
       ) : (
         <div className="w-full h-full bg-bg">
           <div className="lg:flex lg:h-screen lg:items-center">
@@ -66,7 +64,10 @@ const OurExperience: React.FC = () => {
                       <div className="p-[0.1px] bg-white w-32 lg:w-96"></div>
                     </div>
                     <div className="lg:hidden">
-                      <ExperienceList />
+                      <ExperienceList
+                        selectedItem={selectedItem}
+                        onItemClick={handleClick}
+                      />
                     </div>
                   </div>
                   <div>
@@ -76,10 +77,10 @@ const OurExperience: React.FC = () => {
                           <h1 className="font-extrabold text-white uppercase">
                             SCOPE OF WORK
                           </h1>
-                          <h1 className="font-heavy text-orange uppercase text-6xl">
+                          <h1 className="font-heavy text-orange uppercase text-xl lg:text-6xl">
                             {selectedItem.desc}
                           </h1>
-                          <h2 className="font-heavy text-white uppercase text-3xl">
+                          <h2 className="font-heavy text-white uppercase text-md lg:text-3xl">
                             {selectedItem.category}
                           </h2>
                         </>
@@ -137,20 +138,21 @@ const OurExperience: React.FC = () => {
                         </>
                       )}
                     </div>
-                    <div className="lg:hidden">
+                    <div className="pt-5 lg:hidden">
                       <h1 className="text-orange font-extrabold text-2xl">
                         PUBLISHED WORKS
                       </h1>
                       <div className="mt-3">
                         <div className="flex flex-col gap-4">
-                          <PublishList />
+                          <PublishList handleImgClick={handleImgClick} />
                         </div>
+                        <div></div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <div className="pl-4">
+                  <div className="pl-4 hidden lg:block">
                     <div className="lg:grid lg:grid-cols-2">
                       <ExperienceList
                         selectedItem={selectedItem}

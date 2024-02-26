@@ -19,10 +19,9 @@ const publishWork = [
 ];
 
 const PublishList: React.FC<publishListProps> = ({
-  handleImgClick,
-  selectedImg,
+  handleImgClick
 }) => {
-  console.log(selectedImg);
+  
 
   return (
     <>
