@@ -1,7 +1,15 @@
 import React from "react";
 import PublishList from "./PublishList";
 
-const ExperienceList: React.FC = () => {
+interface ExperienceListProps {
+  onItemClick: (desc: string, category: string, index: number) => void;
+  selectedItem: { index: number };
+}
+
+const ExperienceList: React.FC<ExperienceListProps> = ({
+  onItemClick,
+  selectedItem,
+}) => {
   const expList = [
     {
       title: "Makati Commerce Tower",
@@ -196,7 +204,7 @@ const ExperienceList: React.FC = () => {
 
   return (
     <>
-      <div className="hidden">
+      {/* <div className="hidden">
         {expList.map((item, index) => (
           <h1
             key={index}
@@ -205,36 +213,38 @@ const ExperienceList: React.FC = () => {
             {item.title}
           </h1>
         ))}
-      </div>
-      <div className="lg:grid lg:grid-cols-2">
-        <div>
-          {firstCol.map((item, index) => (
-            <h1
-              key={index}
-              className="text-white uppercase pt-1 font-extrabold text-xs py-1"
-            >
-              {item.title}
-            </h1>
-          ))}
-        </div>
-        <div>
-          {secondCol.map((item, index) => (
-            <h1
-              key={index}
-              className="text-white uppercase pt-1 font-extrabold text-xs py-1"
-            >
-              {item.title}
-            </h1>
-          ))}
-          <div className="flex flex-col gap-2">
-            <h1 className="font-heavy text-2xl text-orange uppercase">
-              Published Works
-            </h1>
-            <div className="flex gap-3 max-w-20">
-              <PublishList />
-            </div>
-          </div>
-        </div>
+      </div> */}
+
+      {firstCol.map((item, index) => (
+        <h1
+          key={index}
+          className={` uppercase pt-1 font-extrabold text-xs py-1 cursor-pointer ${
+            selectedItem && index === selectedItem.index
+              ? "text-orange"
+              : "text-white"
+          } `}
+          onClick={() => onItemClick(item.desc, item.category, index)}
+        >
+          {item.title}
+        </h1>
+      ))}
+
+      <div>
+        {secondCol.map((item, index) => (
+          <h1
+            key={index}
+            className={` uppercase pt-1 font-extrabold text-xs py-1 cursor-pointer ${
+              selectedItem && index + firstCol.length === selectedItem.index
+                ? "text-orange"
+                : "text-white"
+            } `}
+            onClick={() =>
+              onItemClick(item.desc, item.category, index + firstCol.length)
+            }
+          >
+            {item.title}
+          </h1>
+        ))}
       </div>
     </>
   );

@@ -53,31 +53,27 @@ const ClientList: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 3) % client.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % client.length);
     }, 3000); // Change the interval duration as needed
 
     return () => clearInterval(interval);
   }, [client.length]);
 
-  const visibleImages = client.slice(currentIndex, currentIndex + 3);
+  const displayClients = client.slice(currentIndex, currentIndex + 3);
   return (
     <>
-      <AnimatePresence initial={false}>
-        {visibleImages.map((image, index) => (
-          <motion.div
+      <AnimatePresence>
+        {displayClients.map((item, index) => (
+          <motion.img
             key={index}
-            className=" w-full h-full"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            src={item.logo}
+            alt="Client Logo"
+            className="w-full h-full"
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: "0%", opacity: 1 }}
+            exit={{ x: "-100%", opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <img
-              src={image.logo}
-              alt={`Client Logo ${index}`}
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
+          />
         ))}
       </AnimatePresence>
     </>

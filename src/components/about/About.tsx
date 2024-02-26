@@ -1,5 +1,4 @@
 import ClientList from "./ClientList";
-import Projects from "./Projects";
 import project1 from "../../assets/images/projects/land development.png";
 import project2 from "../../assets/images/reprojects/BCC C.jpg";
 import project3 from "../../assets/images/reprojects/waterpark.png";

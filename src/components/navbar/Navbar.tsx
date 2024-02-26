@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <div className="w-full h-full px-4 py-12 text-white bg-bg lg:pb-0">
+      <div className="w-full h-full px-4 text-white bg-bg lg:pb-0">
         <div className=" max-w-[1200px] m-auto">
           <div className="flex justify-between items-center relative">
             <div>

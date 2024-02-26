@@ -11,6 +11,7 @@ export default {
     extend: {
       colors: {
         bg: "#00272E",
+        bgfade: "#09434D",
         orange: "#EC5800",
       },
     },

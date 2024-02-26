@@ -2,6 +2,11 @@ import React from "react";
 import image1 from "../../assets/images/publish-work/image-1.png";
 import image2 from "../../assets/images/publish-work/image-2.png";
 
+interface publishListProps {
+  handleImgClick: (img: string, index: number) => void;
+  selectedImg: { index: number };
+}
+
 const publishWork = [
   {
     img: image1,
@@ -13,11 +18,21 @@ const publishWork = [
   },
 ];
 
-const PublishList: React.FC = () => {
+const PublishList: React.FC<publishListProps> = ({
+  handleImgClick,
+  selectedImg,
+}) => {
+  console.log(selectedImg);
+
   return (
     <>
       {publishWork.map((item, index) => (
-        <img key={index} src={item.img} alt="Publish Work Image" />
+        <img
+          onClick={() => handleImgClick(item.img, index)}
+          key={index}
+          src={item.img}
+          alt="Publish Work Image"
+        />
       ))}
     </>
   );
