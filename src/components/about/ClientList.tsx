@@ -26,39 +26,32 @@ const ClientList: React.FC = () => {
     { logo: robArch },
     { logo: DCM },
   ];
+  // const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % client.length);
+  //   }, 3000); // Change the interval duration as needed
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % client.length);
-    }, 3000); // Change the interval duration as needed
+  //   return () => clearInterval(interval);
+  // }, [client.length]);
 
-    return () => clearInterval(interval);
-  }, [client.length]);
-
-  const displayClients = [
-    client[(currentIndex - 1 + client.length) % client.length],
-    client[currentIndex],
-    client[(currentIndex + 1) % client.length],
-  ];
+  // const displayClients = [
+  //   client[(currentIndex - 1 + client.length) % client.length],
+  //   client[currentIndex],
+  //   client[(currentIndex + 1) % client.length],
+  // ];
 
   return (
     <>
-      <AnimatePresence>
-        {displayClients.map((item, index) => (
-          <motion.img
-            key={index}
-            src={item.logo}
-            alt="Client Logo"
-            className="lg:w-full lg:h-full"
-            initial={{ x: "100%", opacity: 0 }}
-            animate={{ x: "0%", opacity: 1 }}
-            exit={{ x: "-100%", opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          />
-        ))}
-      </AnimatePresence>
+      {client.map((item, index) => (
+        <img
+          key={index}
+          src={item.logo}
+          alt="Client Logo"
+          className="w-20 h-full"
+        />
+      ))}
     </>
   );
 };
