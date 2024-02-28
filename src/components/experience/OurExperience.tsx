@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion"
 import ExperienceList from "./ExperienceList";
 import PublishList from "./PublishList";
 import YearEndModal from "./YearEndModal";
@@ -51,9 +52,9 @@ const OurExperience: React.FC = () => {
                         d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8"
                       />
                     </svg>
-                    <h1 className="text-white text-2xl font-heavy uppercase flex flex-col leading-5 lg:text-4xl">
+                    <motion.h1 className="text-white text-2xl font-heavy uppercase flex flex-col leading-5 lg:text-4xl">
                       Our <span>Experience</span>
-                    </h1>
+                    </motion.h1>
                     <h1 className="hidden lg:block text-orange font-extrabold uppercase">
                       Contact US
                     </h1>
